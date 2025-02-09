@@ -1,33 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=SUSE&family=Changa:wght@100..800&family=Handjet:wght@100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* *,
+*::before,
+*::after {
+  transition: background-color 0.5s ease, 
+              color 0.5s ease, 
+              border-color 0.5s ease,
+              opacity 0.5s ease,
+              box-shadow 0.5s ease,
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+html.theme-transition,
+html.theme-transition *:before
+html.theme-transition *:after {
+  transition: all 0.5s !important;
+  transition-delay: 0 !important;
+}
+
+/* Asegurar que las transiciones se apliquen a elementos específicos que podrían estar causando problemas */
+.theme-transition button,
+.theme-transition input,
+.theme-transition select,
+.theme-transition textarea,
+/* .theme-transition a {
+  transition: all 0.5s ease !important;
+} */
+
+/* Transiciones específicas para propiedades que podrían estar cambiando con el tema */
+/* .theme-transition [class*="bg-"], */
+/* .theme-transition [class*="text-"], */
+.theme-transition [class*="border-"] {
+  transition: background-color 0.8s ease,
+              color 0.8s ease,
+              border-color 0.8s ease !important;
+} 
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  
+}
+
+
+
+
+
+
+@font-face {
+  .suse-<uniquifier> {
+    font-family: "SUSE", serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@font-face {
+  .changa-<uniquifier> {
+    font-family: "Changa", serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@font-face {
+  .handjet-<uniquifier> {
+    font-family: "Handjet", serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    font-variation-settings:
+      "ELGR" 1,
+      "ELSH" 2;
   }
+}
+.transform-style-[preserve-3d] {
+  transform-style: preserve-3d;
+}
+
+.rotate-x-[-90deg] {
+  transform: rotateX(-90deg);
+}
+
+.transform-origin-[bottom_center] {
+  transform-origin: bottom center;
+} */
+
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }

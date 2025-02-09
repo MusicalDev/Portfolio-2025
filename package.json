@@ -9,14 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "date-fns": "^3.6.0",
+    "framer-motion": "^11.5.4",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.14",
+    "next": "^15.1.6",
+    "parallax-js": "^3.1.0",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.7"
+    "split-text-js": "^1.0.3",
+    "split-type": "^0.3.4"
   },
   "devDependencies": {
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "eslint": "^8",
-    "eslint-config-next": "14.2.7"
+    "eslint-config-next": "14.2.7",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
   }
 }
