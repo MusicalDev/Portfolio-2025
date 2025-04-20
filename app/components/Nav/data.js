@@ -1,25 +1,33 @@
-export const links = [
+// links.js
+import { useTranslations } from '../hooks/useTranslations';
+
+export function useNavLinks() {
+  const t = useTranslations();
+
+  return [
     {
-        title: "Home",
-        href: "#home-section"
+      title: t('Header.navbar.home'),
+      href: "#home-section"
     },
     {
-        title: "About",
-        href: "#about2-section"
+      title: t('Header.navbar.about'),
+      href: "#about2-section"
     },
     {
-        title: "Projects",
-        href: "#projects-section"
+      title: t('Header.navbar.projects'),
+      href: "#projects-section"
     },
     {
-        title: "Experience",
-        href: "#experience-section"
+      title: t('Header.navbar.experience'),
+      href: "#experience-section"
     },
     {
-        title: "Contact",
-        href: "#contact-section"
+      title: t('Header.navbar.contact'),
+      href: "#contact-section"
     }
-]
+  ];
+}
+
 
 export const footerLinks = [
   

@@ -298,10 +298,13 @@
 // components/ExpandableMenu.js
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { links, footerLinks } from './../Nav/data';
-import { perspective, slideIn } from "./../Nav/anim";
+import { links, footerLinks, useNavLinks } from '../Nav/data';
+import { perspective, slideIn } from "../Nav/anim";
 import Link from 'next/link';
 import { useActiveSection } from '../hooks/useActiveSection';
+import ThemeToggleSwitch from '../themeToggleButton/themeToggleSwitch';
+import LanguageSwitcher from '../languageSwitcher/LanguageSwitcher';
+import LangToggleSwitch from '../langToggleSwitch/langToggleSwitch';
 
 const getMenuVariants = (isMobile) => ({
   open: {
@@ -322,6 +325,8 @@ export default function ExpandableMenu() {
   const [isActive, setIsActive] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const activeSection = useActiveSection();
+  const navLinks = useNavLinks();
+
 
   useEffect(() => {
     const checkMobile = () => {
@@ -342,82 +347,104 @@ export default function ExpandableMenu() {
       const section = document.querySelector(href);
       if (section) {
         section.scrollIntoView({ behavior: "smooth" });
-      
-      const onScrollEnd = () => {
-        setIsActive(false);
-        window.removeEventListener("scrollend", onScrollEnd);
-      };
 
-      window.addEventListener("scrollend", onScrollEnd);
+        const onScrollEnd = () => {
+          setIsActive(false);
+          window.removeEventListener("scrollend", onScrollEnd);
+        };
+
+        window.addEventListener("scrollend", onScrollEnd);
+      }
+    } else {
+      setTimeout(() => setIsActive(false), 300);
     }
-  } else {
-    setTimeout(() => setIsActive(false), 300);
-  }
-};
+  };
 
   return (
     <div className="relative mr-2">
       <motion.div
-        className="bg-gradient-to-br from-yellow-100 to-amber-300 dark:bg-gradient-to-br dark:from-graylight dark:to-gray rounded-[25px] absolute top-0 right-0 shadow-xl"
+        className="bg-gradient-to-br from-yellow-100 to-amber-300  dark:bg-gradient-to-br dark:from-graylight dark:to-gray rounded-[25px] absolute top-0 right-0 shadow-xl"
         variants={menuVariants}
         animate={isActive ? "open" : "closed"}
         initial="closed"
       >
         {isActive && (
-          <div className="flex flex-col bg-lightred/0 dark:bg-graylight/0 rounded-[25px] justify-between h-full p-[100px_40px_50px] box-border">
+          <div className="flex flex-col dark:bg-graylight/0 rounded-[25px] justify-between h-full p-[100px_40px_50px] box-border">
+
             <div className="flex flex-col gap-2">
-              {links.map((link, i) => {
+              {navLinks.map((link, i) => {
                 const { title, href } = link;
                 const sectionId = href.replace('#', '').replace('-section', '');
                 const isCurrentSection = activeSection === sectionId;
 
                 return (
-                  <div
-                    key={`b_${i}`}
-                    className={`perspective-[120px] w-[1px] px-[2px] rounded-full relative left-4 perspective-origin-bottom
-                      ${isCurrentSection ? 'bg-red dark:bg-red' : 'hover:bg-lightred dark:hover:bg-lightred'}`}
-                  >
-                    {href.startsWith("#") ? (
-                      <motion.div
-                        custom={i}
-                        variants={perspective}
-                        initial="initial"
-                        animate="enter"
-                        exit="exit"
-                        className="cursor-pointer"
-                        onClick={(e) => handleClick(e, href)}
-                      >
-                        <a className={`text dark:text-light2 font-suse font-400 text-4xl tracking-[0.2em] no-underline
-                          ${isCurrentSection
-                            ? 'text-violet dark:text-yel font-600'
-                            : 'hover:text-lightviolet dark:hover:text-lightyel hover:font-600'}`}
-                        >
-                          {title}
-                        </a>
-                      </motion.div>
-                    ) : (
-                      <Link href={href} passHref>
-                      <motion.div
-                        custom={i}
-                        variants={perspective}
-                        initial="initial"
-                        animate="enter"
-                        exit="exit"
-                        className={`cursor-pointer text-light dark:text-light2 
-                          hover:text-dark dark:hover:text-lightgreen font-suse font-400 
-                          hover:font-600 text-4xl tracking-[0.2em] no-underline 
-                          ${activeSection === href.replace("#", "") ? "text-slate-900 dark:text-lightgreen font-600" : ""}`
-                        }
-                        onClick={(e) => handleClick(e, href)}
-                      >
-                          {title}
-                        </motion.div>
-                      </Link>
-                    )}
-                  </div>
+<div key={`b_${i}`} className="relative pl-4">
+  <div
+    className={`
+      absolute left-0 top-1/2 -translate-y-1/2
+      w-[1px] h-full
+      rounded-full 
+      ${isCurrentSection ? 'bg-red dark:bg-red' : 'hover:bg-lightred dark:hover:bg-lightred'}
+    `}
+  />
+  {href.startsWith("#") ? (
+    <motion.div
+      custom={i}
+      variants={perspective}
+      initial="initial"
+      animate="enter"
+      exit="exit"
+      className="cursor-pointer"
+      onClick={(e) => handleClick(e, href)}
+    >
+      <a
+        className={`
+          dark:text-light2 font-suse font-400 text-4xl tracking-[0.2em] no-underline
+          ${isCurrentSection
+            ? 'text-violet dark:text-yel font-600'
+            : 'hover:text-lightviolet dark:hover:text-lightyel hover:font-600'}
+        `}
+      >
+        {title}
+      </a>
+    </motion.div>
+  ) : (
+    <Link href={href} passHref>
+      <motion.div
+        custom={i}
+        variants={perspective}
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        className={`
+          cursor-pointer text-light dark:text-light2 
+          hover:text-dark dark:hover:text-lightgreen font-suse font-400 
+          hover:font-600 text-4xl tracking-[0.2em] no-underline 
+          ${activeSection === href.replace("#", "") ? "text-slate-900 dark:text-lightgreen font-600" : ""}
+        `}
+        onClick={(e) => handleClick(e, href)}
+      >
+        {title}
+      </motion.div>
+    </Link>
+  )}
+</div>
+
                 );
               })}
             </div>
+
+            <div className="flex justify-start px-5  items-center">
+            <LangToggleSwitch isMobile={isMobile} />
+            </div>
+
+            {/* Theme Toggle Row */}
+            <div className="flex justify-start px-5 items-center">
+              <ThemeToggleSwitch isMobile={isMobile} />
+            </div>
+
+
+
             <motion.div className="flex flex-wrap gap-10 cursor-pointer font-suse font-400">
               {footerLinks.map((link, i) => {
                 const { title, href } = link;

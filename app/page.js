@@ -53,13 +53,19 @@
 'use client'
 
 import { useEffect, useState } from 'react';
-import About from "@/app/about/page";
-import Logo from "@/app/components/logo/page";
-import Contact from "@/app/contact/page";
-import splitText from "@/app/components/splitText/splitText";
-import HighlightEffect1 from '@/app/aboutText/page';
+import Logo from "./components/logo/page";
+import Contact from "./contact/page";
+import splitText from "./components/splitText/splitText";
+import HighlightEffect1 from './aboutText/page';
+// import { useTranslations } from 'next-intl';
+import { useTranslations } from './components/hooks/useTranslations';
+import AboutImage from './components/aboutImage/page';
+import Slide from './components/slideText/page';
 
 export default function Home() {
+  const t = useTranslations();
+
+
   const [opacity, setOpacity] = useState(1);
 
   splitText();
@@ -79,12 +85,15 @@ export default function Home() {
       }
     };
 
+
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+
   return (
-    
+
     <main className="flex flex-col w-full">
       {/* Primera sección - Home */}
       <section id="home-section" className="flex justify-center items-center flex-col h-screen w-full">
@@ -98,23 +107,39 @@ export default function Home() {
         <div className="z-[-0] relative h-1/2 w-full justify-center items-center font-handjet font-700 text-2xl text-dark">
           <div className="flex h-full w-full justify-center items-center">
             <div className="flex text-center justify-center mt-[200px]">
+              <p id="split-text" className="absolute leading-[0] text-2xl tracking-[.05em] m-0 p-0 text-dark dark:text-lightyel">{t('HomePage.split1')}</p>
+              <p id="split-text" className="absolute leading-[0] text-2xl tracking-[.05em] m-0 p-0 text-dark dark:text-lightyel">{t('HomePage.split2')}</p>
+              <p id="split-text" className="absolute leading-[0] text-2xl tracking-[.05em] m-0 p-0 text-red dark:text-yel">{t('HomePage.split3')}</p>
+              <p id="split-text" className="absolute leading-[0] text-2xl tracking-[.05em] m-0 p-0 text-violet dark:text-lightred">{t('HomePage.split4')}</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="about2-section" className="flex justify-center items-center min-h-screen w-full py-20">
+      {/* <section id="about2-section" className="flex justify-center items-center min-h-screen w-full py-20">
         <About />
+      </section> */}
+
+      
+      <section className="flex flex-col justify-center items-center min-h-screen w-full py-20">
+        <div className='flex justify-center items-center h-full w-full pt-20'><Slide />
+        </div>      
       </section>
 
-      <section className="flex justify-center items-start min-h-screen w-full py-20">
+      <section id="about2-section" className="flex flex-col justify-center items-center h-full w-full">
+      <div  id="about2-section" className='flex justify-center items-center min-h-screen w-full py-0'><AboutImage />
+      </div> 
+
+      </section>
+
+      <section className="flex justify-center items-start h-full w-full">
         <div className="container mx-auto">
           <HighlightEffect1 />
         </div>
       </section>
 
       <section id="projects-section" className="flex relative justify-center items-center min-h-screen w-full py-20">
-        Proyectos
+        {t('projects')}
       </section>
 
       <section id="experience-section" className="flex relative justify-center items-center min-h-screen w-full py-20">

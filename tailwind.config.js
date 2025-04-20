@@ -9,6 +9,13 @@ module.exports = {
 
   theme: {
     extend: {
+
+      backdropBlur: {
+        sm: '4px',
+        DEFAULT: '10px',
+        md: '16px', // o cualquier otro valor que necesites
+      },
+
       transitionProperty: {
         'all': 'all',
       },

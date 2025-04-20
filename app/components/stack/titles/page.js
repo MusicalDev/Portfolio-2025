@@ -112,7 +112,97 @@
 
 // export default TitleScroller
 
-import React, { useEffect, useState } from 'react';
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useEffect, useState } from 'react';
+
+// const TitleScroller = ({ data, setSelectedProject }) => {
+//   return (
+//     <div className="relative w-full h-full">
+//       {data.map((project, i) => (
+//         <Title
+//           key={i}
+//           data={{ ...project, i, }}
+//           setSelectedProject={setSelectedProject}
+//         />
+//       ))}
+//     </div>
+//   );
+// };
+
+// function Title({ data, setSelectedProject }) {
+//   const { title, speed, i } = data;
+
+//   // Estado para almacenar el progreso del scroll
+//   const [scrollProgress, setScrollProgress] = useState(0);
+
+//   // Hook useEffect para manejar el scroll
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       // Calculamos el progreso del scroll como un porcentaje
+//       const scrollY = window.scrollY;
+//       const windowHeight = window.innerHeight;
+//       const docHeight = document.documentElement.scrollHeight;
+
+//       // Calcular el porcentaje del scroll
+//       const progress = Math.min((scrollY / (docHeight - windowHeight)) * 100, 100);
+
+//       // Actualizar el estado del progreso
+//       setScrollProgress(progress);
+//     };
+
+//     // Añadir el evento de scroll
+//     window.addEventListener('scroll', handleScroll);
+
+//     // Limpiar el evento al desmontar el componente
+//     return () => {
+//       window.removeEventListener('scroll', handleScroll);
+//     };
+//   }, []);
+
+//   // Calcular el valor del clip en función del progreso del scroll
+//   const clipProgress = 100 - scrollProgress * (speed ?? 1);
+
+//   const clipStyle = {
+//     clipPath: `inset(0 ${clipProgress}% 0 0)`
+//   };
+
+//   return (
+//     <div className="relative flex z-[2]">
+//       <div
+//         className="inline-block pl-[10%] relative"
+//         onMouseOver={() => setSelectedProject(i)}
+//         onMouseLeave={() => setSelectedProject(null)}
+//       >
+//         {/* Título en color con efecto de scroll */}
+//         <p
+//           className="inline-block text-gray dark:text-yel uppercase font-bold text-[7.3vw] leading-[8.5vw] md:leading-[13vw] m-0 relative z-[2] "
+//           style={clipStyle}
+//         >
+//           {title}
+//         </p>
+//         {/* Título en gris sin efecto */}
+//         <p className="block absolute top-0 text-[#b7ab98] z-[1] uppercase font-bold text-[7.3vw] leading-[8.5vw] md:leading-[13vw] m-0">
+//           {title}
+//         </p>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default TitleScroller;
+
+
+import React, { useEffect, useState, useRef } from 'react';
 
 const TitleScroller = ({ data, setSelectedProject }) => {
   return (
@@ -130,42 +220,45 @@ const TitleScroller = ({ data, setSelectedProject }) => {
 
 function Title({ data, setSelectedProject }) {
   const { title, speed, i } = data;
+  const titleRef = useRef(null);
+  const [fillProgress, setFillProgress] = useState(0);
 
-  // Estado para almacenar el progreso del scroll
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  // Hook useEffect para manejar el scroll
   useEffect(() => {
     const handleScroll = () => {
-      // Calculamos el progreso del scroll como un porcentaje
-      const scrollY = window.scrollY;
+      if (!titleRef.current) return;
+      
+      const rect = titleRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      const docHeight = document.documentElement.scrollHeight;
-
-      // Calcular el porcentaje del scroll
-      const progress = Math.min((scrollY / (docHeight - windowHeight)) * 100, 100);
-
-      // Actualizar el estado del progreso
-      setScrollProgress(progress);
+      
+      let progress = 0;
+      
+      if (rect.top <= windowHeight && rect.bottom >= 0) {
+        progress = ((windowHeight - rect.top) / (windowHeight + rect.height)) * 100;
+        
+        progress = progress * (speed || 1);
+        
+        progress = Math.max(0, Math.min(100, progress));
+      } else if (rect.top < 0) {
+        progress = 100;
+      }
+      
+      setFillProgress(progress);
     };
 
-    // Añadir el evento de scroll
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
 
-    // Limpiar el evento al desmontar el componente
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [speed]);
 
-  // Calcular el valor del clip en función del progreso del scroll
-  const clipProgress = 100 - scrollProgress;
   const clipStyle = {
-    clipPath: `inset(0 ${clipProgress}% 0 0)`
+    clipPath: `inset(0 ${100 - fillProgress}% 0 0)`
   };
 
   return (
-    <div className="relative flex z-[2]">
+    <div className="relative flex z-[2]" ref={titleRef}>
       <div
         className="inline-block pl-[10%] relative"
         onMouseOver={() => setSelectedProject(i)}

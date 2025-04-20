@@ -135,6 +135,7 @@ import SplitType from 'split-type';
 import { useTheme } from '../components/themeContext/themeContext';
 import DownloadButton from '../downloadButton/page';
 import Tech from '../components/stack';
+import HighlightedParagraph from '../components/highLightTextStack/highlightedParagraph';
 
 const HighlightEffect1 = () => {
   const contentRef = useRef(null);
@@ -255,7 +256,8 @@ const HighlightEffect1 = () => {
       </div>
       <DownloadButton text="Descargar CV" />
       <div className='flex flex-col h-full w-full justify-center items-center'>
-        <div className='font-suse uppercase font-bold text-8xl md:text-5xl mb-32'>Stack</div>
+        {/* <div className='font-suse uppercase font-bold text-8xl md:text-5xl mb-32'>Stack</div> */}
+        <HighlightedParagraph/>
         <div className='flex flex-col h-full w-full font-suse'>
           <Tech/>
         </div>

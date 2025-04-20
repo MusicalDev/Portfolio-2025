@@ -81,16 +81,16 @@ const RandomGif = ({ theme }) => {
     }, [theme]);
 
     return (
-        <div className="w-auto h-[200px] md:w-[130px] md:h-[130px] bg-dark overflow-hidden rounded-xl m-4">
+        <div className="relative w-[200px] h-[200px] md:w-[130px] md:h-[130px] bg-transparent overflow-hidden rounded-xl m-4">
             {gifSrc ? (
                 <img 
                     src={gifSrc} 
                     alt="Random GIF" 
-                    className="w-[200px] h-[200px] md:w-[130px] md:h-[130px] object-cover" 
+                    className="absolute w-[200px] h-full md:w-[130px] md:h-[130px] object-cover" 
                 />
             ) : (
                 // Opcional: Puedes mostrar un placeholder mientras carga
-                <div className="w-full h-full animate-pulse bg-gray-700" />
+                <div className="w-[200px] h-full animate-pulse bg-gray-700" />
             )}
         </div>
     );

@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* *,
+ /* *,
 *::before,
 *::after {
   transition: background-color 0.5s ease, 
@@ -11,27 +11,27 @@
               border-color 0.5s ease,
               opacity 0.5s ease,
               box-shadow 0.5s ease,
-}
+} */
 
 html.theme-transition,
 html.theme-transition *:before
 html.theme-transition *:after {
-  transition: all 0.5s !important;
+  transition: all 0.5 !important;
   transition-delay: 0 !important;
-}
+} 
 
 /* Asegurar que las transiciones se apliquen a elementos específicos que podrían estar causando problemas */
 .theme-transition button,
 .theme-transition input,
 .theme-transition select,
 .theme-transition textarea,
-/* .theme-transition a {
+.theme-transition a {
   transition: all 0.5s ease !important;
-} */
+}
 
 /* Transiciones específicas para propiedades que podrían estar cambiando con el tema */
-/* .theme-transition [class*="bg-"], */
-/* .theme-transition [class*="text-"], */
+.theme-transition [class*="bg-"], 
+.theme-transition [class*="text-"], 
 .theme-transition [class*="border-"] {
   transition: background-color 0.8s ease,
               color 0.8s ease,
@@ -113,4 +113,23 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+.hx-10 {
+  --color-highlight-start: currentColor;
+  background-color: transparent !important; /* Override any default background */
+}
+
+.hx-10 .word {
+  position: absolute;
+}
+
+.hx-10 .word:last-child {
+  position: relative;
+}
+
+/* Additional rule to ensure no highlight background */
+.hx-10.bg-transparent {
+  background: none;
+  text-decoration: none;
 }

@@ -6,7 +6,7 @@ const ProjectDescriptions = ({ data, selectedProject }) => {
   }
   
   return (
-    <div className="absolute  top-[0px] h-full w-full z-[2] pointer-events-none">
+    <div className="absolute top-[0px] h-full w-full z-[2] pointer-events-none">
       {data.map((project, i) => {
         const { title, description } = project;
         return (
