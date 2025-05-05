@@ -1,0 +1,36 @@
+{
+  "HomePage": {
+    "split1": "Transformando Ideas",
+    "split2": "en bla bla bla..",
+    "split3": "Bueno, Bonito",
+    "split4": "Y Barato!",
+    "projects": "Proyectos"
+  },
+  "Header": {
+    "navbar": {
+      "home": "Inicio",
+      "about": "Sobre mi",
+      "projects": "Proyectos",
+      "experience": "Experiencia",
+      "contact": "Contacto",
+      "linkedIn": "LinkedIn",
+      "sendEmail": "Enviar email"
+    },
+    "buttonTheme": {
+      "choose": "Elige tu equipo",
+      "select": "Selecciona una opción",
+      "light": "Equipo del mal",
+      "dark": "Equipo del bien",
+      "close": "Cerrar"
+    }
+  },
+  "aboutText": {
+    "aboutText1": "A lo largo de mi camino, me he especializado en",
+    "aboutTextEffect": "Desarrollo Web.",
+    "aboutText2": "Como músico no puedo evitar ver las similudes entre la música y la programación: ambas diciplinas proponen procesos creativos que combinan estructuras y libertad, requieren práctica, constancia y dedicación. Ambas parten de la nada, moldeando el silencio y transformandolo a través de un lenguaje, lo que nos da lugar a obras únicas.",
+    "download": "Descargar CV"
+  },
+  "StackPage": {
+    "More": "Y MAS..."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "HomePage": {
+    "split1": " Transforming Ideas",
+    "split2": "Into bla bla bla..",
+    "split3": "Good, Nice",
+    "split4": "And Cheap",
+    "projects": "Projects"
+  },
+  "Header": {
+    "navbar": {
+      "home": "Home",
+      "about": "About",
+      "projects": "Projects",
+      "experience": "Experience",
+      "contact": "Contact",
+      "linkedIn": "LinkedIn",
+      "sendEmail": "Send Email"
+    },
+    "buttonTheme": {
+      "choose": "Choose your team",
+      "select": "Select an option",
+      "light": "Bad team",
+      "dark": "Good team",
+      "close": "Close"
+    }
+  },
+  "aboutText": {
+    "aboutText1": "Throughout my journey, I’ve specialized in",
+    "aboutTextEffect": "Web Development.",
+    "aboutText2": "As a musician, I can't help but see the similarities between music and programming: both disciplines propose creative processes that combine structure and freedom, requiring practice, perseverance and dedication. Both start from nothing, shaping silence and transforming it through a language, which gives rise to unique works.",
+    "download": "Download CV"
+  },
+  "StackPage": {
+    "More": "AND MORE..."
+  }
+}
