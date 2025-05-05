@@ -1,133 +1,4 @@
-
-// import React, { useEffect, useRef } from 'react';
-// import { gsap } from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import SplitType from 'split-type';
-// import { useTheme } from '../components/themeContext/themeContext';
-// import DownloadButton from '../downloadButton/page';
-
-// import Projects from '../components/stack';
-
-
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// const HighlightEffect1 = () => {
-//   const contentRef = useRef(null);
-//   const charsRef = useRef(null);
-//   const { theme } = useTheme();
-
-
-//   const colors = {
-//     light: {
-//       highlight: '#7C00FE', 
-//       shadow: '#a78bfa'     
-//     },
-//     dark: {
-//       highlight: '#ffbd00', 
-//       shadow: '#fef08a'     
-//     }
-//   };
-
-//   useEffect(() => {
-    
-//     const text = new SplitType(contentRef.current.querySelector('mark'), {
-//       types: 'chars',
-//       tagName: 'span'
-//     });
-
-//     charsRef.current = text.chars;
-
-//     const animationDefaults = {
-//       duration: 0.5,
-//       ease: 'power1'
-//     };
-
-//     const currentColors = theme === 'dark' ? colors.dark : colors.light;
-
-//     ScrollTrigger.create({
-//       trigger: contentRef.current,
-//       start: 'top bottom',
-//       onEnter: () => animateChars(currentColors),
-//       onEnterBack: () => animateChars(currentColors),
-//       onLeave: () => resetChars(),
-//       onLeaveBack: () => resetChars()
-//     });
-
-//     const animateChars = (themeColors) => {
-//       const tl = gsap.timeline({ defaults: animationDefaults });
-      
-//       tl.set(charsRef.current, { 
-//         willChange: 'transform, opacity, color, filter' 
-//       })
-//       .to(charsRef.current, {
-//         stagger: 0.06,
-//         opacity: 0,
-//         scale: 0.8,
-//       })
-//       .to(charsRef.current, {
-//         stagger: 0.06,
-//         opacity: 1,
-//         scale: 1,
-//         color: themeColors.highlight,
-//         filter: `drop-shadow(0px 0px 20px ${themeColors.shadow})`,
-//         startAt: { filter: `drop-shadow(0px 0px 0px ${themeColors.shadow})` }
-//       }, animationDefaults.duration);
-//     };
-
-//     const resetChars = () => {
-//       gsap.killTweensOf(charsRef.current);
-//       gsap.set(charsRef.current, {
-//         scale: 1,
-//         opacity: 1,
-//         color: '',
-//         filter: 'drop-shadow(0px 0px 0px transparent)'
-//       });
-//     };
-
-//     return () => {
-//       if (text) text.revert();
-//       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-//     };
-//   }, [theme]); 
-
-//   return (
-//     <div className="min-h-screen w-full flex flex-col items-center justify-start mt-32 transition-colors duration-200">
-//       <div 
-//         ref={contentRef} 
-//         className="max-w-7xl p-8"
-//         style={{ 
-//           '--color-highlight-end': theme === 'dark' ? colors.dark.highlight : colors.light.highlight 
-//         }}
-//       >
-//         <p className="text-2xl  leading-relaxed text-dark dark:text-light2">
-//           A lo largo de mi camino, me he especializado en {' '}
-//           <mark className="bg-transparent text-inherit text-3xl font-bold">
-//             Desarrollo Web.
-//           </mark>{' '}
-//           Como músico no puedo evitar ver las similudes entre la música y la programación: 
-//           ambas diciplinas proponen procesos creativos que combinan estructuras y libertad, requieren práctica, constancia y dedicación. 
-//           Ambas parten de la nada, moldeando el silencio y transformandolo a través de un lenguaje, lo que nos da lugar a obras únicas.
-//         </p>
-//       </div>
-//       <DownloadButton text="Descargar CV" />
-//       <div className='flex flex-col h-full w-full  justify-center items-center'>
-//       <div className='font-suse uppercase font-bold text-8xl md:text-5xl mb-32'>Stack</div>
-//       <div className='flex flex-col h-full w-full font-suse'>
-//       <Projects/>
-//       </div>
-//       </div>
-
-//     </div>
-
-//   );
-// };
-
-// export default HighlightEffect1;
-
-
 'use client'
-
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -136,22 +7,26 @@ import { useTheme } from '../components/themeContext/themeContext';
 import DownloadButton from '../downloadButton/page';
 import Tech from '../components/stack';
 import HighlightedParagraph from '../components/highLightTextStack/highlightedParagraph';
+import { useTranslations } from '../components/hooks/useTranslations';
 
 const HighlightEffect1 = () => {
   const contentRef = useRef(null);
   const charsRef = useRef(null);
   const { theme } = useTheme();
+  const t = useTranslations();
 
   const colors = {
     light: {
-      highlight: '#7C00FE', 
-      shadow: '#a78bfa'     
+      highlight: '#7C00FE',
+      shadow: '#a78bfa'
     },
     dark: {
-      highlight: '#ffbd00', 
-      shadow: '#fef08a'     
+      highlight: '#ffbd00',
+      shadow: '#fef08a'
     }
   };
+
+  const effectText = t('aboutText.aboutTextEffect');
 
   useEffect(() => {
     // Verificar si estamos en el navegador
@@ -195,23 +70,23 @@ const HighlightEffect1 = () => {
       if (!charsRef.current) return;
 
       const tl = gsap.timeline({ defaults: animationDefaults });
-      
-      tl.set(charsRef.current, { 
-        willChange: 'transform, opacity, color, filter' 
+
+      tl.set(charsRef.current, {
+        willChange: 'transform, opacity, color, filter'
       })
-      .to(charsRef.current, {
-        stagger: 0.06,
-        opacity: 0,
-        scale: 0.8,
-      })
-      .to(charsRef.current, {
-        stagger: 0.06,
-        opacity: 1,
-        scale: 1,
-        color: themeColors.highlight,
-        filter: `drop-shadow(0px 0px 20px ${themeColors.shadow})`,
-        startAt: { filter: `drop-shadow(0px 0px 0px ${themeColors.shadow})` }
-      }, animationDefaults.duration);
+        .to(charsRef.current, {
+          stagger: 0.06,
+          opacity: 0,
+          scale: 0.8,
+        })
+        .to(charsRef.current, {
+          stagger: 0.06,
+          opacity: 1,
+          scale: 1,
+          color: themeColors.highlight,
+          filter: `drop-shadow(0px 0px 20px ${themeColors.shadow})`,
+          startAt: { filter: `drop-shadow(0px 0px 0px ${themeColors.shadow})` }
+        }, animationDefaults.duration);
     };
 
     const resetChars = () => {
@@ -233,33 +108,31 @@ const HighlightEffect1 = () => {
         trigger.kill();
       }
     };
-  }, [theme]); 
+  }, [theme, effectText]);
 
   return (
     <div className=" w-full flex flex-col items-center justify-start mt-32 transition-colors duration-200">
-      <div 
-        ref={contentRef} 
+      <div
+        ref={contentRef}
         className="max-w-7xl p-8"
-        style={{ 
-          '--color-highlight-end': theme === 'dark' ? colors.dark.highlight : colors.light.highlight 
+        style={{
+          '--color-highlight-end': theme === 'dark' ? colors.dark.highlight : colors.light.highlight
         }}
       >
         <p className="text-2xl leading-relaxed text-dark dark:text-light2">
-          A lo largo de mi camino, me he especializado en {' '}
+          {t('aboutText.aboutText1')} {' '}
           <mark className="bg-transparent text-inherit text-3xl font-bold">
-            Desarrollo Web.
+            {t('aboutText.aboutTextEffect')}
           </mark>{' '}
-          Como músico no puedo evitar ver las similudes entre la música y la programación: 
-          ambas diciplinas proponen procesos creativos que combinan estructuras y libertad, requieren práctica, constancia y dedicación. 
-          Ambas parten de la nada, moldeando el silencio y transformandolo a través de un lenguaje, lo que nos da lugar a obras únicas.
+          {t('aboutText.aboutText2')}
         </p>
       </div>
-      <DownloadButton text="Descargar CV" />
+      <DownloadButton text={t('aboutText.download')} />
       <div className='flex flex-col h-full w-full justify-center items-center'>
         {/* <div className='font-suse uppercase font-bold text-8xl md:text-5xl mb-32'>Stack</div> */}
-        <HighlightedParagraph/>
+        <HighlightedParagraph />
         <div className='flex flex-col h-full w-full font-suse'>
-          <Tech/>
+          <Tech />
         </div>
       </div>
     </div>

@@ -9,17 +9,15 @@ const HighlightText = ({ children, text, className = '' }) => {
   const charsRef = useRef([]);
   const [isClient, setIsClient] = useState(false);
 
-  // Wait until component mounts to register GSAP plugins
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     setIsClient(true);
   }, []);
 
-  // Split text into characters and wrap them in spans
   const splitTextIntoChars = (text) => {
     return text.split('').map((char, index) => (
-      <span 
-        className="" 
+      <span
+        className=""
         key={index}
         ref={(el) => {
           if (el) charsRef.current[index] = el;
@@ -30,7 +28,6 @@ const HighlightText = ({ children, text, className = '' }) => {
     ));
   };
 
-  // Set up animation after the component is mounted
   useEffect(() => {
     if (!isClient) return;
 
@@ -44,8 +41,6 @@ const HighlightText = ({ children, text, className = '' }) => {
       duration: 0.3,
       ease: 'power2.in',
     };
-
-    // Create the scroll trigger
     const scrollTrigger = ScrollTrigger.create({
       trigger: highlightedElement,
       start: 'top bottom',
@@ -73,29 +68,27 @@ const HighlightText = ({ children, text, className = '' }) => {
     // };
 
     const animateChars = () => {
-        // Detect dark mode
-        const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches || 
+      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches ||
         document.documentElement.classList.contains('dark');
-        
-        // Set colors based on mode
-        const lightModeColor = '#7C00FE'; // Red color for light mode
-        const darkModeColor = '#fef08a';  // Blue color for dark mode
-        const currentColor = isDarkMode ? darkModeColor : lightModeColor;
-        
-        chars.forEach((char) => {
-          gsap
-            .timeline({ defaults: animationDefaults })
-            .fromTo(char, {
-              filter: `brightness(100%) drop-shadow(0px 0px 0px ${currentColor})`,
-              willChange: 'filter',
-            }, {
-              delay: gsap.utils.random(0, 1),
-              repeat: 1,
-              yoyo: true,
-              filter: `brightness(300%) drop-shadow(0px 0px 100px ${currentColor})`
-            });
-        });
-      };
+
+      const lightModeColor = '#7C00FE'; 
+      const darkModeColor = '#fef08a';  
+      const currentColor = isDarkMode ? darkModeColor : lightModeColor;
+
+      chars.forEach((char) => {
+        gsap
+          .timeline({ defaults: animationDefaults })
+          .fromTo(char, {
+            filter: `brightness(100%) drop-shadow(0px 0px 0px ${currentColor})`,
+            willChange: 'filter',
+          }, {
+            delay: gsap.utils.random(0, 1),
+            repeat: 1,
+            yoyo: true,
+            filter: `brightness(300%) drop-shadow(0px 0px 100px ${currentColor})`
+          });
+      });
+    };
 
 
 
@@ -113,11 +106,11 @@ const HighlightText = ({ children, text, className = '' }) => {
         scrollTrigger.kill();
       }
     };
-  }, [isClient]); // Only run when isClient changes
+  }, [isClient]);
 
   return (
-    <span 
-      ref={highlightRef} 
+    <span
+      ref={highlightRef}
       className={`hx hx-10 relative inline-block bg-transparent ${className}`}
     >
       {/* Normal text for positioning */}

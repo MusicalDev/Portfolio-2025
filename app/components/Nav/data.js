@@ -1,4 +1,4 @@
-// links.js
+
 import { useTranslations } from '../hooks/useTranslations';
 
 export function useNavLinks() {
@@ -29,15 +29,17 @@ export function useNavLinks() {
 }
 
 
-export const footerLinks = [
-  
+export function useFooterLinks() {
+  const t = useTranslations();
+
+  return [
     {
-        title: "LinkedIn",
-        href: "https://www.linkedin.com/in/ulises-oreste-developer"
+      title: t('Header.navbar.linkedIn'),
+      href: "https://www.linkedin.com/in/ulises-oreste-developer"
     },
- 
     {
-        title: "Send Email",
-        href: "mailto:ulisesoreste@gmail.com"
+      title: t('Header.navbar.sendEmail'),
+      href: "mailto:ulisesoreste@gmail.com"
     }
-]
+  ];
+}

@@ -4,18 +4,18 @@ const ProjectDescriptions = ({ data, selectedProject }) => {
   const crop = (string, maxLength) => {
     return string.substring(0, maxLength);
   }
-  
+
   return (
     <div className="absolute top-[0px] h-full w-full z-[2] pointer-events-none">
       {data.map((project, i) => {
         const { title, description } = project;
         return (
-          <div 
-            key={i} 
+          <div
+            key={i}
             className="bg-lightred  dark:bg-lightviolet flex justify-between items-center px-[10%] transition-[clip-path] duration-500"
             style={{
-              clipPath: selectedProject === i 
-                ? "inset(0 0 0)" 
+              clipPath: selectedProject === i
+                ? "inset(0 0 0)"
                 : "inset(50% 4% 50%)"
             }}
           >
