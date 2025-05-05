@@ -69,9 +69,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* <section id="about2-section" className="flex justify-center items-center min-h-screen w-full py-20">
-        <About />
-      </section> */}
 
 
       <section className="flex flex-col justify-center items-center min-h-screen w-full py-20">
