@@ -1,17 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=SUSE&family=Changa:wght@100..800&family=Handjet:wght@100..900&display=swap');
+@import url('https:/fonts.googleapis.com/css2?family=SUSE&family=Changa:wght@100..800&family=Handjet:wght@100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
- /* *,
-*::before,
-*::after {
-  transition: background-color 0.5s ease, 
-              color 0.5s ease, 
-              border-color 0.5s ease,
-              opacity 0.5s ease,
-              box-shadow 0.5s ease,
-} */
+
 
 html.theme-transition,
 html.theme-transition *:before
@@ -20,7 +12,7 @@ html.theme-transition *:after {
   transition-delay: 0 !important;
 } 
 
-/* Asegurar que las transiciones se apliquen a elementos específicos que podrían estar causando problemas */
+
 .theme-transition button,
 .theme-transition input,
 .theme-transition select,
@@ -29,7 +21,7 @@ html.theme-transition *:after {
   transition: all 0.5s ease !important;
 }
 
-/* Transiciones específicas para propiedades que podrían estar cambiando con el tema */
+
 .theme-transition [class*="bg-"], 
 .theme-transition [class*="text-"], 
 .theme-transition [class*="border-"] {
@@ -117,7 +109,7 @@ html.lenis, html.lenis body {
 
 .hx-10 {
   --color-highlight-start: currentColor;
-  background-color: transparent !important; /* Override any default background */
+  background-color: transparent !important; 
 }
 
 .hx-10 .word {
@@ -128,7 +120,7 @@ html.lenis, html.lenis body {
   position: relative;
 }
 
-/* Additional rule to ensure no highlight background */
+
 .hx-10.bg-transparent {
   background: none;
   text-decoration: none;

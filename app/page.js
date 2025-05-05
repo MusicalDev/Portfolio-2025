@@ -49,7 +49,6 @@ export default function Home() {
   return (
 
     <main className="flex flex-col w-full">
-      {/* Primera sección - Home */}
       <section id="home-section" className="flex justify-center items-center flex-col h-screen w-full">
         <Logo />
         <div className="flex h-1/2 w-full justify-center items-center font-handjet text-xl">
