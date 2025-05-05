@@ -1,8 +1,6 @@
 'use client';
 
 import { useLanguage } from '../../context/languageContext';
-import es from '../../../../messages/es.json';
-import en from '../../../../messages/en.json';
 
 export function useTranslations() {
   const { locale } = useLanguage();
