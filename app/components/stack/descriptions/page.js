@@ -34,21 +34,30 @@
 
 // export default ProjectDescriptions
 
+"use client";
 import React from 'react';
 
 const ProjectDescriptions = ({ data, selectedProject }) => {
+  // Función para recortar texto si es demasiado largo
   const crop = (string, maxLength) => {
+    if (!string) return "";
     return string.substring(0, maxLength);
   };
 
-  if (!Array.isArray(data) || data.length === 0) {
-    return <div>No data available</div>; // O cualquier mensaje de carga/error
+  // Verificación defensiva para asegurar que data es un array
+  if (!data || !Array.isArray(data) || data.length === 0) {
+    return <div className="text-center p-4">No hay proyectos disponibles</div>;
   }
 
   return (
     <div className="absolute top-[0px] h-full w-full z-[2] pointer-events-none">
       {data.map((project, i) => {
-        const { title, description } = project;
+        // Verificación defensiva para cada proyecto individual
+        if (!project) return null;
+        
+        // Desestructuración con valores por defecto
+        const { title = "", description = "" } = project;
+        
         return (
           <div
             key={i}
