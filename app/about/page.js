@@ -8,7 +8,7 @@ export default function About() {
       <div className="absolute h-1/2 w-full">
         <TextScroll />
 
-        <div id="about2-section" className="flex h-screen w-full ">
+        <div id="about2-section" className="flex h-full w-full ">
           <AboutImage />
         </div>
       </div>

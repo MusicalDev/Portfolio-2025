@@ -61,7 +61,7 @@ export default function Header() {
     const [showText, setShowText] = useState(false);
     const pathname = usePathname();
 
-    const textOpacity = useTransform(scrollY, [800, 1000], [0, 1]);
+    const textOpacity = useTransform(scrollY, [300, 1000], [0, 1]);
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         if (latest <= 0) {
@@ -171,7 +171,7 @@ export default function Header() {
                 ) : null}
             </motion.nav>
             <motion.div
-                className="fixed justify-center items-center backdrop-blur-lg w-full h-20 top-0 right-0  z-10 hidden lg:block "
+                className="fixed justify-center items-center bg-transparent w-full h-20 top-0 right-0  z-10 hidden lg:block "
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
