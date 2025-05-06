@@ -58,7 +58,7 @@ export default function Home() {
         </div>
 
         <div className="z-[-0] relative h-full w-full font-handjet font-700 text-2xl text-dark">
-          <div className="absolute bottom-8 w-full flex justify-center items-center">
+          <div className="absolute bottom-24 w-full flex justify-center items-center">
             <div className="flex text-center justify-center">
               <p className="split-text absolute leading-[0] text-2xl tracking-[.05em] m-0 p-0 text-dark dark:text-lightyel">{split1}</p>
               <p className="split-text absolute leading-[0] text-2xl tracking-[.05em] m-0 p-0 text-dark dark:text-lightyel">{split2}</p>

@@ -203,7 +203,7 @@ export default function Logo() {
                         y="50%"
                         dy={"0"}
                         textAnchor="middle"
-                        className="fill-dark stroke-dark dark:fill-light dark:stroke-light/80 w-full font-300 animate-animateStrokeLight dark:animate-animateStrokeDark tracking-wider"
+                        className="fill-dark stroke-dark dark:fill-yel dark:stroke-yel/80 w-full font-300 animate-animateStrokeLight dark:animate-animateStrokeDark tracking-wider"
                     >
                         Ulises Oreste
                     </text>
@@ -212,7 +212,7 @@ export default function Logo() {
                         x="50%"
                         y="120%"
                         textAnchor="middle"
-                        className="fill-gray stroke-gray dark:fill-light2 dark:stroke-light2/80 w-full font-300 animate-animateStrokeLight dark:animate-animateStrokeDark tracking-wider z-50 text-6xl"
+                        className="fill-gray stroke-gray dark:fill-yel/80 dark:stroke-yel/80 w-full font-300 animate-animateStrokeLight dark:animate-animateStrokeDark tracking-wider z-50 text-6xl"
                         style={{ opacity: textOpacity }}
                     >
                         Web Dev.
