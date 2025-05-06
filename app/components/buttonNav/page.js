@@ -102,7 +102,7 @@ export default function ExpandableMenu() {
                       >
                         <a
                           className={`
-          dark:text-light2 font-suse font-400 text-4xl tracking-[0.2em] no-underline
+          dark:text-light2 font-suse font-400 text-4xl md:text-xl tracking-[0.2em] no-underline
           ${isCurrentSection
                               ? 'text-violet dark:text-yel font-600'
                               : 'hover:text-lightviolet dark:hover:text-lightyel hover:font-600'}
@@ -122,7 +122,7 @@ export default function ExpandableMenu() {
                           className={`
           cursor-pointer text-light dark:text-light2 
           hover:text-dark dark:hover:text-lightgreen font-suse font-400 
-          hover:font-600 text-4xl tracking-[0.2em] no-underline 
+          hover:font-600 text-4xl  tracking-[0.2em] no-underline 
           ${activeSection === href.replace("#", "") ? "text-slate-900 dark:text-lightgreen font-600" : ""}
         `}
                           onClick={(e) => handleClick(e, href)}
@@ -162,7 +162,7 @@ export default function ExpandableMenu() {
                     >
                       <a
                         href={href}
-                        className="text-violet dark:text-lightyel text-xl hover:font-600 hover:text-red dark:hover:text-lightred no-underline relative px-[6px]"
+                        className="text-violet dark:text-lightyel text-xl md:text-sm hover:font-600 hover:text-red dark:hover:text-lightred no-underline relative px-[6px]"
                         target={href.startsWith("http") ? "_blank" : "_self"}
                         rel={href.startsWith("http") ? "noopener noreferrer" : ""}
                       >

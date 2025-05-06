@@ -22,8 +22,8 @@ export default function LanguageSwitch() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const width = isMobile ? 66 : 78;
-  const height = isMobile ? 32 : 36;
+  const width = isMobile ? 62 : 78;
+  const height = isMobile ? 28 : 36;
   const circleSize = height - 9;
 
   return (

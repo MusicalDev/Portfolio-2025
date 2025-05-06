@@ -26,8 +26,8 @@ export default function ThemeToggleSwitch({ isMobile }) {
   // const height = isMobile ? 26 : 30;
   // const circleSize = height - 4;
 
-  const width = isMobile ? 66 : 78;
-  const height = isMobile ? 32 : 36;
+  const width = isMobile ? 62 : 78;
+  const height = isMobile ? 28 : 36;
   const circleSize = height - 9;
 
   return (
