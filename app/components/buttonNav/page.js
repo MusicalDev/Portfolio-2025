@@ -72,9 +72,9 @@ export default function ExpandableMenu() {
         initial="closed"
       >
         {isActive && (
-          <div className="flex flex-col dark:bg-graylight/0 rounded-[25px] justify-between h-full p-[100px_40px_50px] box-border">
+          <div className="flex flex-col dark:bg-graylight/0 rounded-[25px] justify-between h-full py-[60px] px-[40px] box-border">
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-6">
               {navLinks.map((link, i) => {
                 const { title, href } = link;
                 const sectionId = href.replace('#', '').replace('-section', '');
@@ -102,7 +102,7 @@ export default function ExpandableMenu() {
                       >
                         <a
                           className={`
-          dark:text-light2 font-suse font-400 text-4xl md:text-xl tracking-[0.2em] no-underline
+          dark:text-light2 font-suse font-400 text-4xl md:text-xl tracking-[0.3em] no-underline
           ${isCurrentSection
                               ? 'text-violet dark:text-yel font-600'
                               : 'hover:text-lightviolet dark:hover:text-lightyel hover:font-600'}
