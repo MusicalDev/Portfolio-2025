@@ -74,7 +74,7 @@ export default function ExpandableMenu() {
         {isActive && (
           <div className="flex flex-col dark:bg-graylight/0 rounded-[25px] justify-between h-full py-[60px] px-[40px] box-border">
 
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4">
               {navLinks.map((link, i) => {
                 const { title, href } = link;
                 const sectionId = href.replace('#', '').replace('-section', '');
